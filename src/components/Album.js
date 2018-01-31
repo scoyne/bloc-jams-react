@@ -16,26 +16,14 @@ class Album extends Component {
       album: album
     };
 
-    
-
-    const songList = this.state.album.songs; {
-
-      let trackNumber = 0;
-      
+    const songList = this.state.album.songs;
       for(let i = 0; i < songList.length; i++) {
-        trackNumber++;
-        
+        let trackNumber = i + 1;
+        return trackNumber;
       }
 
-      const songTitle = songList.map(songs => {
-        console.log(songs.title, songs.duration);
-        //  return songs.title
-      });
-
-    }
-
   }
-
+  
   render() {
     return (
       <section className='album'>
@@ -54,7 +42,15 @@ class Album extends Component {
              <col id="song-duration-column" />
            </colgroup>  
            <tbody>
-             <tr>  </tr>
+             {
+              this.state.album.songs.map( (songs, index) =>
+                <tr className='album-view-song-item'>  
+                  <td className='song-item-number'> {this.state.album.songs.songList} </td>
+                  <td className='song-item-title'> {songs.title}</td>
+                  <td className='song-item-duration'> {songs.duration} </td>
+                </tr>
+              )
+             }
            </tbody>
          </table>
       </section>
