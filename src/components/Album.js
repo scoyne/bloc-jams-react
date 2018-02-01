@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
+import Ionicon from 'react-ionicons';
+import './Album.css';
 
 
 class Album extends Component {
@@ -15,20 +16,13 @@ class Album extends Component {
     this.state = {
       album: album
     };
-
-    const songList = this.state.album.songs;
-      for(let i = 0; i < songList.length; i++) {
-        let trackNumber = i + 1;
-        return trackNumber;
-      }
-
   }
   
   render() {
     return (
       <section className='album'>
          <section id="album-info">
-           <img id="album-cover-art" src={this.state.album.albumCover} />
+           <img id="album-cover-art" src={this.state.album.albumCover} alt={`${this.state.album.title}album title`} />
            <div className="album-details">
              <h1 id="album-title">{this.state.album.title}</h1>
              <h2 className="artist">{this.state.album.artist}</h2>
@@ -43,11 +37,17 @@ class Album extends Component {
            </colgroup>  
            <tbody>
              {
-              this.state.album.songs.map( (songs, index) =>
-                <tr className='album-view-song-item'>  
-                  <td className='song-item-number'> {this.state.album.songs.songList} </td>
-                  <td className='song-item-title'> {songs.title}</td>
-                  <td className='song-item-duration'> {songs.duration} </td>
+              this.state.album.songs.map( (track, index) =>
+                <tr key={index} className='album-view-song-item'>
+                  <td className='song-activity'>
+                    <button>
+                      <span className='song-activity-play'><Ionicon icon='md-play' /> </span>
+                      <span className='song-activity-pause'><Ionicon icon='md-pause' /></span>
+                      <span > {index +1}</span>
+                    </button>
+                  </td>  
+                  <td className='song-item-title'> {track.title}</td>
+                  <td className='song-item-duration'> {track.duration} </td>
                 </tr>
               )
              }
