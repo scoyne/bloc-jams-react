@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
-import Ionicon from 'react-ionicons';
-import './Album.css';
+import Ionicon from 'react-ionicons';// 
+// import './Album.css';
 
 
 class Album extends Component {
@@ -14,10 +14,40 @@ class Album extends Component {
     });
 
     this.state = {
-      album: album
+      album: album,
+      currentSong: album.songs[0],
+      isPlaying: false
     };
+
+    this.audioElement = document.createElement('audio');
+    this.audioElement.src = album.songs[0].audioSrc;
+  }
+
+  play() {
+    this.audioElement.play();
+    this.setState({ isPlaying: true });
   }
   
+  pause() {
+    this.audioElement.pause();
+    this.setState({ isPlaying: false });
+  }   
+
+  setSong(song) {
+    this.audioElement.src = song.audioSrc;
+    this.setState({ currentSong: song });
+  }
+
+  handleSongClick(song) {
+     const isSameSong = this.state.currentSong === song;
+     if (this.state.isPlaying && isSameSong) {
+       this.pause();
+     } else {
+       this.play();
+     }
+  }
+
+
   render() {
     return (
       <section className='album'>
@@ -37,17 +67,19 @@ class Album extends Component {
            </colgroup>  
            <tbody>
              {
-              this.state.album.songs.map( (track, index) =>
-                <tr key={index} className='album-view-song-item'>
-                  <td className='song-activity'>
+              this.state.album.songs.map( (song, index) =>
+                <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+                  <td className='song-actions'>
                     <button>
                       <span className='song-activity-play'><Ionicon icon='md-play' /> </span>
                       <span className='song-activity-pause'><Ionicon icon='md-pause' /></span>
-                      <span > {index +1}</span>
+                      <span className='ion-play'></span>
+                      <span className='ion-pause'></span>
+                      <span className='song-number'> {index +1}</span>
                     </button>
                   </td>  
-                  <td className='song-item-title'> {track.title}</td>
-                  <td className='song-item-duration'> {track.duration} </td>
+                  <td className='song-item-title'> {song.title}</td>
+                  <td className='song-item-duration'> {song.duration} </td>
                 </tr>
               )
              }
