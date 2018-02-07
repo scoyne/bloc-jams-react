@@ -56,7 +56,7 @@ class Album extends Component {
 
   handleNextClick() {
     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-    const newIndex = Math.max((this.state.album.songs.length - 1), currentIndex + 1);
+    const newIndex = Math.min((this.state.album.songs.length -1), currentIndex + 1);
     console.log('current index ' + currentIndex + ' , newIndex ' + newIndex );
     const newSong = this.state.album.songs[newIndex];
     this.setSong(newSong);
