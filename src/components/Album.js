@@ -90,14 +90,6 @@ class Album extends Component {
     this.setState({ currentTime: newTime });
   }
 
-  handleVolumeChange(v) {
-    const newVolume = this.audioElement.volume;
-    console.log(this.audioElement.volume);
-//    this.setState({ volume: newVolume });
-  }
-
-
-
   render() {
     return (
       <section className='album'>
