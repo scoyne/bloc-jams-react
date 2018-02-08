@@ -1,0 +1,10 @@
+.song-activity button{
+    font-size: 1em;
+}
+.song-activity-play {
+    display: none;
+}
+
+.song-activity-pause {
+    display: none;
+}
