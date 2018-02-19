@@ -26,3 +26,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navbar a {
+  font-size: 2em;
+  color: #ff1493;
+  font-family: fantasy;
+}
+
+.navbar {
+  background-color: #574c92;
+}

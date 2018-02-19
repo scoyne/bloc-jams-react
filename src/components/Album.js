@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Col, Jumbotron, Row  } from 'reactstrap';
+
 
 
 class Album extends Component {
@@ -135,9 +137,9 @@ class Album extends Component {
               this.state.album.songs.map( (song, index) =>
                 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
                   <td className='song-actions'>
-                    <button>
-                      <span className='ion-play'></span>
-                      <span className='ion-pause'></span>
+                    <button> 
+                      <span className='btn btn-primary ion-play'></span>
+                      <span className='btn btn-secondary ion-pause'></span>
                       <span className='song-number'> {index +1}</span>
                     </button>
                   </td>  
