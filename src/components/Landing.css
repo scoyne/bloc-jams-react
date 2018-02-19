@@ -1,7 +1,7 @@
 .hero-content {
     position: relative;
     min-height: 600px;
-    background-image: url(/assets/images/cover/pexels-photo-374866.jpeg);
+    background-image: url(/assets/images/cover/pexels-photo-374866bw.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -10,7 +10,11 @@
 }
 
 .hero-content .hero-title {
-    margin-top: 10%;
+    margin-top: 8%;
+}
+
+.hero-content .lead {
+    font-size: 2em;
 }
 .point-image {
     width: 100%;
@@ -19,7 +23,6 @@
     margin-bottom: 10px;
     position: relative;
     display: inline-block;
-
 }
 
 .point-image-top {
