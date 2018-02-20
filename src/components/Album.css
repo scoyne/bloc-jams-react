@@ -1,10 +1,15 @@
-.song-activity button{
-    font-size: 1em;
-}
-.song-activity-play {
-    display: none;
+.album {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5em;
+    padding-bottom: 200px;
 }
 
-.song-activity-pause {
-    display: none;
+#album-cover-art {
+    float: left;
+    height: 300px;
+    padding: 15px 25px;
+    margin-bottom: 10px;
+    position: relative;
+    display: inline-block;
 }

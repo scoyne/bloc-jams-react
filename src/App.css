@@ -27,11 +27,18 @@
   to { transform: rotate(360deg); }
 }
 
+.navbar {
+  background-color: #111;
+  margin-bottom: 0;
+  padding: 0.5px;
+}
+
 .navbar a {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #fff;
 }
 
-.navbar {
-  background-color: #111;
+.navbar img {
+  height: 110%;
+  width: 110%;
 }

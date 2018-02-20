@@ -1,3 +1,9 @@
+.landing {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5em;
+    padding-bottom: 200px;
+}
 .hero-content {
     position: relative;
     min-height: 600px;
@@ -37,4 +43,11 @@
 .point:hover .point-image-top {
     display: inline;
     width: 100%;
+}
+.point-title {
+    font-size: 1.75em;
+    padding: 5px 0 20px 0;
+}
+.point-description {
+    font-size: 1.10em;
 }
