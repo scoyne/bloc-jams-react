@@ -13,3 +13,14 @@
     position: relative;
     display: inline-block;
 }
+
+#play-pause {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.5em;
+}
+
+#play-pause:hover {
+    background-color: #fff;
+    color: #000;
+}
