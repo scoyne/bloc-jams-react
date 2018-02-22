@@ -1,13 +1,13 @@
 .album {
+    font-family: 'Josefin Slab', serif;
     background-color: #000;
     color: #fff;
-    font-size: 1.5em;
-    padding-bottom: 200px;
 }
-
-#album-cover-art {
-    float: left;
-    height: 300px;
+#album-title {
+    font-size: 3em;
+}
+#album-cover-art img {
+    height: 50%;
     padding: 15px 25px;
     margin-bottom: 10px;
     position: relative;
@@ -23,4 +23,18 @@
 #play-pause:hover {
     background-color: #fff;
     color: #000;
+}
+
+#time-control {
+    display: inline-flex;
+}
+
+.controls {
+    margin-top: -25%;
+}
+
+#song-list {
+    position: relative;
+    margin-top: 30%;
+    font-size: 1.5em;
 }
