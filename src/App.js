@@ -10,22 +10,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Navbar inverse collapseOnSelect>
+          <Navbar className='blocjams-menu' inverse>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="/">BlocJams React</a>
+                <a href="/"><img className='blocjams-logo' src='./assets/images/bloc_jams_logo.png' /> BlocJams React</a>
               </Navbar.Brand>
             </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav>
-                <NavItem eventKey={1} href="/">
-                  HOME
-                </NavItem>
-                <NavItem eventKey={2} href="/Library">
+            <Nav>
+              <NavItem eventKey={2} href="/Library">
                   LIBRARY
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
+              </NavItem>
+            </Nav>
           </Navbar>
         <main>
           <Route exact path="/" component={Landing} />

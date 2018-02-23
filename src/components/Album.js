@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-import { Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
+import { Button, Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
 import './Album.css';
 
 
@@ -113,32 +113,29 @@ class Album extends Component {
     this.audioElement.volume = newVolume;
     this.setState({ volume: newVolume });
   }
-  
-  getInitialHoverState() {
-    return {
-      hoveredIndex: -1
-    };
-  }
 
   handleHover(index) {
+    console.log('hovered IN');
     this.setState({ 
-      hoveredIndex: index 
+      hoverIndex: index 
+
     });
   }
 
   handleHoverLeave() {
+    console.log('hovered OUT')
     this.setState({ 
-      hoveredIndex: -1 
+      hovereIndex: -1 
     });
   }
 
   songListButton(index) {
-    if((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
-        this.pause();
+    if((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]){
+      return 'ion-pause';
     } else if ((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
-        this.play();
+      return "ion-play " + "song-number-" + index+1;
     } else {
-        return 'song-number';
+      return "song-number-" + index+1;
     }
   }
 
@@ -168,21 +165,19 @@ class Album extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {    
-                    this.state.album.songs.map( (song, index) =>
-                      <tr className="song" 
-                          key={index} 
-                          onMouseEnter={ () => this.handleHover(index) } 
-                          onMouseLeave={ () => this.handleHoverLeave() } 
-                          onClick={() => this.handleSongClick(song)} 
-                      >
+                  {
+                    this.state.album.songs.map( (song, index) =>    
+                      <tr className='song' key={index} onClick={() => this.handleSongClick(this.state.currentSong, index)} >
+                        <td className='song-actions'>
+                          <Button>
+                            <span className={this.songListButton(this.state.hoverIndex)}> {index + 1} </span>
+                            <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+                              <div onClick={this.props.handleSongClick}> </div>
+                          </Button>
+                        </td>
 
                         <td className='song-actions'>
-                          <button id="play-pause" onClick={this.props.handleSongClick} >
-                            <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
-                            <span className={this.songListButton(this.state.hoverIndex)}> {index+1} </span>
-                            <span className={this.songListButton(index)}> </span>
-                          </button>
+                          
                         </td> 
                         <td className='song-item-title'> {song.title}</td>
                         <td className='song-item-duration'> {this.formatTime(song.duration)} </td>

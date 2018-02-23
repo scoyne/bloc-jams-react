@@ -39,11 +39,10 @@
     font-size: 1.5em;
 }
 
-.play-pause {
-    display: none;
+.song-actions {
+
 }
 
-.play-pause: hover; {
-    display: inline;
+.song-actions:hover {
+    display: inline-block;
 }
-    
