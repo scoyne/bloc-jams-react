@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Button, Col, Grid, Nav, Navbar, NavItem, ProgressBar, Row } from 'react-bootstrap'
+import { Nav, Navbar, NavItem, } from 'react-bootstrap'
  
 class PlayerBar extends Component {
   render() {

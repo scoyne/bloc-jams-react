@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import albumData from './../data/albums';
-import { Button, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Col, Jumbotron, Row  } from 'reactstrap';
+import { Col, Grid, Row  } from 'react-bootstrap';
 import './Library.css';
 
 class Library extends Component {
@@ -17,19 +17,19 @@ class Library extends Component {
           {
             this.state.albums.map( (album, index) =>
               <Link to={`/album/${album.slug}`} key={index} >
-                <Container>
+                <Grid>
                   <Row>
-                    <Col xs-2>
+                    <Col xs={6}>
                       <img src={album.albumCover} alt={album.title} />  
                     </Col>
-                    <Col xs-2>
+                    <Col xs={6}>
                       <div className='album-title'>{album.title}</div>
                       <div className='album-artist'>{album.artist}</div>
                       <div className='album-length'>number of tracks: {album.songs.length}</div>
                       <hr />
                     </Col>
                   </Row>
-                </Container>
+                </Grid>
               </Link>
             )
           }

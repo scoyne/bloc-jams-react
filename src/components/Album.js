@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-import { Button, Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
+import { Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
 import './Album.css';
 
 
@@ -114,6 +114,33 @@ class Album extends Component {
     this.setState({ volume: newVolume });
   }
   
+  getInitialHoverState() {
+    return {
+      hoveredIndex: -1
+    };
+  }
+
+  handleHover(index) {
+    this.setState({ 
+      hoveredIndex: index 
+    });
+  }
+
+  handleHoverLeave() {
+    this.setState({ 
+      hoveredIndex: -1 
+    });
+  }
+
+  songListButton(index) {
+    if((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
+        this.pause();
+    } else if ((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
+        this.play();
+    } else {
+        return 'song-number';
+    }
+  }
 
 
   render() {
@@ -135,8 +162,7 @@ class Album extends Component {
             <Table responsive id="song-list">
                 <thead>
                   <tr>
-                    <th>   </th>
-                    <th> # </th>
+                    <th> TRACK </th>
                     <th> SONG </th>
                     <th> TIME</th>
                   </tr>
@@ -144,13 +170,20 @@ class Album extends Component {
                 <tbody>
                   {    
                     this.state.album.songs.map( (song, index) =>
-                      <tr className="song">
+                      <tr className="song" 
+                          key={index} 
+                          onMouseEnter={ () => this.handleHover(index) } 
+                          onMouseLeave={ () => this.handleHoverLeave() } 
+                          onClick={() => this.handleSongClick(song)} 
+                      >
+
                         <td className='song-actions'>
                           <button id="play-pause" onClick={this.props.handleSongClick} >
                             <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+                            <span className={this.songListButton(this.state.hoverIndex)}> {index+1} </span>
+                            <span className={this.songListButton(index)}> </span>
                           </button>
                         </td> 
-                        <td><span className='song-number'> {index +1}</span> </td>
                         <td className='song-item-title'> {song.title}</td>
                         <td className='song-item-duration'> {this.formatTime(song.duration)} </td>
                       </tr>

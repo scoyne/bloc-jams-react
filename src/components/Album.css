@@ -38,3 +38,12 @@
     margin-top: 30%;
     font-size: 1.5em;
 }
+
+.play-pause {
+    display: none;
+}
+
+.play-pause: hover; {
+    display: inline;
+}
+    
