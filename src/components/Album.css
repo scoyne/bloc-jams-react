@@ -39,10 +39,7 @@
     font-size: 1.5em;
 }
 
-.song-actions {
-
-}
-
-.song-actions:hover {
-    display: inline-block;
+.song-actions Button {
+    background-color: #aaa;
+    font-size: 1.5em;
 }

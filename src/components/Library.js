@@ -33,6 +33,14 @@ class Library extends Component {
               </Link>
             )
           }
+          <section className='footer'>
+            <Grid>
+              <Row  className='disclaimer'>
+                <Col xs={6} ><h4>Designed by Bloc.io</h4> </Col>
+                <Col xs={6} ><h4>Created by Stephen Coyne</h4></Col>
+              </Row>
+            </Grid>
+          </section>  
           </section>
         );
     }

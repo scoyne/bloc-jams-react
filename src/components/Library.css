@@ -28,3 +28,12 @@
     position: absolute;
     top: 55%;
 }
+
+.footer {
+    background-color: #444;
+    height: 500px;
+}
+
+.disclaimer {
+    margin-top: 50px;
+}

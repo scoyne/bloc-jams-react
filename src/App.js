@@ -13,10 +13,13 @@ class App extends Component {
           <Navbar className='blocjams-menu' inverse>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="/"><img className='blocjams-logo' src='./assets/images/bloc_jams_logo.png' /> BlocJams React</a>
+                <a href="/"><img className='blocjams-logo' src='/assets/images/bloc_jams_logo.png' alt='blocjams logo' /> BlocJams React</a>
               </Navbar.Brand>
             </Navbar.Header>
-            <Nav>
+            <Nav className='navigation'>
+              <NavItem eventKey={1} href="/Library">
+                  HOME
+              </NavItem>
               <NavItem eventKey={2} href="/Library">
                   LIBRARY
               </NavItem>
