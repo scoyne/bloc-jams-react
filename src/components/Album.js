@@ -3,7 +3,6 @@ import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
 import { Button, Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
 import './Album.css';
-
 class Album extends Component {
   constructor(props) {
     super(props);
