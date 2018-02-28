@@ -3,6 +3,18 @@
     background-color: #000;
     color: #fff;
 }
+
+#album-body {
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    background-color: #000;
+    font-size: 1.25em;
+}
+
+
 #album-title {
     font-size: 3em;
 }

@@ -7,29 +7,30 @@ import Album from './components/Album';
 import { Navbar, Nav, NavItem  } from 'react-bootstrap';
 
 class App extends Component {
+
   render() {
     return (
-      <div className="App">
-          <Navbar className='blocjams-menu' inverse>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <a href="/"><img className='blocjams-logo' src='/assets/images/bloc_jams_logo.png' alt='blocjams logo' /> BlocJams React</a>
-              </Navbar.Brand>
-            </Navbar.Header>
-            <Nav className='navigation'>
-              <NavItem eventKey={1} href="/Library">
+      <div className="App" >
+          <Navbar inverse staticTop>
+            <Navbar.Header >
+              <Navbar.Brand >
+                <a href="/"><img className='blocjams-logo' src='/assets/images/bloc_jams_logo.png' alt='blocjams logo' /> </a>
+              </Navbar.Brand >
+            </Navbar.Header >
+            <Nav id='nav-item'>
+              <NavItem className='nav-title' eventKey={1} href="/" >
                   HOME
-              </NavItem>
-              <NavItem eventKey={2} href="/Library">
+              </NavItem >
+              <NavItem className='nav-title' eventKey={2} href="/Library" >
                   LIBRARY
-              </NavItem>
-            </Nav>
-          </Navbar>
-        <main>
-          <Route exact path="/" component={Landing} />
-          <Route path="/library" component={Library} />
-          <Route path="/album/:slug" component={Album} />
-        </main>
+              </NavItem >
+            </Nav >
+          </Navbar >
+          <main >
+            <Route exact path="/" component={Landing} />
+            <Route path="/library" component={Library} />
+            <Route path="/album/:slug" component={Album} />
+          </main >
       </div>
     );
   }

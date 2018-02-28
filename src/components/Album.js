@@ -72,9 +72,7 @@ class Album extends Component {
       this.setSong(song); 
       this.play();
     }
-    let newTrackNumber = this.state.album.songs.map(() => true);
-    newTrackNumber[this.state.album.songs.indexOf(song)] = false;
-    this.setState({ songNumber: newTrackNumber });
+
   }
 
 
@@ -143,71 +141,81 @@ class Album extends Component {
 
   render() {
     return (
-      <Grid className='album'>
-        <Row className='album-info'>
-          <Col sm={4} md={4} id='album-cover-art'>
-              <img src={this.state.album.albumCover} alt={`${this.state.album.title} album title`} />
-          </Col>
-          <Col sm={4} md={4} >
-              <div className='album-details'>
-                <h1 id='album-title'>{this.state.album.title}</h1>
-                <h2 className='artist'>{this.state.album.artist}</h2>
-                <div id='release-info'>{this.state.album.releaseInfo}</div>
-                <hr />
-              </div>
-          </Col>
-          <Col sm={4} md={4} mdPull={3} >   
-            <Table responsive id='song-list'>
-                <thead>
-                  <tr>
-                    <th> TRACK </th>
-                    <th> SONG </th>
-                    <th> TIME</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {
-                  this.state.album.songs.map( (song, index) =>
-                  <tr className='song' 
-                      key={index} 
-                      onMouseEnter={(e) => this.hoverIn(e, index)} 
-                      onMouseLeave={() => this.hoverOut()} 
-                      onClick={() => this.handleSongClick(song)} >
-                    <td className='song-actions'>
-                      <Button>
-                        <span className={this.songListButton(index)} style={{display: this.state.handleHover[index] || this.state.songNumber[index] ? 'none' : '' }}></span>
-                        <span style={{display: this.state.handleHover[index] || !this.state.songNumber[index] ? 'none' : '' }}> {index+1} </span>
-                        <span className='ion-play' style={{display: this.state.handleHover[index] ? '' : 'none' }}></span>
-                      </Button>
-                    </td>
-                    <td>{song.title}</td>
-                    <td>{this.formatTime(song.duration)}</td>
-                  </tr>
-                  )
-                }
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-        <Row className='controls'>
-          <Col sm={4} md={4} className='playerBar'>
-            <PlayerBar 
-                isPlaying={this.state.isPlaying}
-                currentSong={this.state.currentSong}
-                currentTime={this.audioElement.currentTime}
-                duration={this.audioElement.duration}
-                volume={this.audioElement.volume}
-                handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-                handlePrevClick={() => this.handlePrevClick()}
-                handleNextClick={() => this.handleNextClick()}
-                handleTimeChange={(e) => this.handleTimeChange(e)}
-                formatTime={(e) => this.formatTime(e)}
-                handleVolumeChange={(e) => this.handleVolumeChange(e)}
-            />
-          </Col>
-          <Col> </Col>
-        </Row>
-      </Grid>
+      <section id='album-body'>
+        <Grid className='album'>
+          <Row className='album-info'>
+            <Col sm={4} md={4} id='album-cover-art'>
+                <img src={this.state.album.albumCover} alt={`${this.state.album.title} album title`} />
+            </Col>
+            <Col sm={4} md={4} >
+                <div className='album-details'>
+                  <h1 id='album-title'>{this.state.album.title}</h1>
+                  <h2 className='artist'>{this.state.album.artist}</h2>
+                  <div id='release-info'>{this.state.album.releaseInfo}</div>
+                  <hr />
+                </div>
+            </Col>
+            <Col sm={4} md={4} mdPull={3} >   
+              <Table responsive id='song-list'>
+                  <thead>
+                    <tr>
+                      <th> TRACK </th>
+                      <th> SONG </th>
+                      <th> TIME</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {
+                    this.state.album.songs.map( (song, index) =>
+                    <tr className='song' 
+                        key={index} 
+                        onMouseEnter={(e) => this.hoverIn(e, index)} 
+                        onMouseLeave={() => this.hoverOut()} 
+                        onClick={() => this.handleSongClick(song)} >
+                      <td className='song-actions'>
+                        <Button>
+                          <span className={this.songListButton(index)} style={{display: this.state.handleHover[index] || this.state.songNumber[index] ? 'none' : '' }}></span>
+                          <span style={{display: this.state.handleHover[index] || !this.state.songNumber[index] ? 'none' : '' }}> {index+1} </span>
+                          <span className='ion-play' style={{display: this.state.handleHover[index] ? '' : 'none' }}></span>
+                        </Button>
+                      </td>
+                      <td>{song.title}</td>
+                      <td>{this.formatTime(song.duration)}</td>
+                    </tr>
+                    )
+                  }
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+          <Row className='controls'>
+            <Col sm={4} md={4} className='playerBar'>
+              <PlayerBar 
+                  isPlaying={this.state.isPlaying}
+                  currentSong={this.state.currentSong}
+                  currentTime={this.audioElement.currentTime}
+                  duration={this.audioElement.duration}
+                  volume={this.audioElement.volume}
+                  handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+                  handlePrevClick={() => this.handlePrevClick()}
+                  handleNextClick={() => this.handleNextClick()}
+                  handleTimeChange={(e) => this.handleTimeChange(e)}
+                  formatTime={(e) => this.formatTime(e)}
+                  handleVolumeChange={(e) => this.handleVolumeChange(e)}
+              />
+            </Col>
+            <Col> </Col>
+          </Row>
+        </Grid>
+        <section className='footer'>
+            <Grid>
+              <Row  className='disclaimer'>
+                <Col xs={6} ><h4>Designed by Bloc.io</h4> </Col>
+                <Col xs={6} ><h4>Created by Stephen Coyne</h4></Col>
+              </Row>
+            </Grid>
+          </section>  
+      </section>
     );
   }
 }

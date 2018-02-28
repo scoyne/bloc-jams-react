@@ -27,12 +27,20 @@
   to { transform: rotate(360deg); }
 }
 
-.navbar {
-  font-size: 2em;
-  display: inline-block;
+.blocjams-logo {
+  margin-left: -200%; 
+  width: 125px;
+  height: 75px;
 }
 
-.blocjams-logo {
-  margin-left: -200%;
-  position: relative;
+#nav-item {
+  flex-direction:row !important;
+}
+
+.nav-title {
+  font-size: 2em;
+}
+
+.nav .navbar-nav {
+  right: 10px;
 }
