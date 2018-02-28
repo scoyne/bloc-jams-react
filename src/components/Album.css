@@ -47,11 +47,14 @@
 
 #song-list {
     position: relative;
-    margin-top: 30%;
+    margin-top: 125px;
+    text-align: center;
     font-size: 1.5em;
 }
 
 .song-actions Button {
-    background-color: #aaa;
-    font-size: 1.5em;
+    background-color: #777;
+    color: #333;
+    font-size: 1em;
+    text-align: center;
 }

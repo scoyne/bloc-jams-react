@@ -64,17 +64,16 @@ class Album extends Component {
     this.setState({songNumber: newTrackNumber});
   }
 
-  handleSongClick(song) {
+
+  handleSongClick(song){
     const isSameSong = this.state.currentSong === song;
-    if (this.state.isPlaying && isSameSong) {
+    if(this.state.isPlaying && isSameSong){
       this.pause();
-    }else if (!isSameSong) {
-      this.setSong(song); 
+    } else {
+      if(!isSameSong){ this.setSong(song) }
       this.play();
     }
-
   }
-
 
   handlePrevClick() {
     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
@@ -175,7 +174,7 @@ class Album extends Component {
                       <td className='song-actions'>
                         <Button>
                           <span className={this.songListButton(index)} style={{display: this.state.handleHover[index] || this.state.songNumber[index] ? 'none' : '' }}></span>
-                          <span style={{display: this.state.handleHover[index] || !this.state.songNumber[index] ? 'none' : '' }}> {index+1} </span>
+                          <span style={{display: this.state.handleHover[index] || !this.state.songNumber[index] ? 'none' : ''}}> {index+1} </span>
                           <span className='ion-play' style={{display: this.state.handleHover[index] ? '' : 'none' }}></span>
                         </Button>
                       </td>
