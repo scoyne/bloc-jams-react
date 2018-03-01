@@ -18,8 +18,6 @@ class Album extends Component {
     duration: album.songs[0].duration,
     volume: 1,
     isPlaying: false,
-    handleHover: album.songs.map(() => false),
-    songNumber: album.songs.map(() => true)
   };
 
     this.audioElement = document.createElement('audio');
@@ -60,8 +58,6 @@ class Album extends Component {
   setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
-    let newTrackNumber = [this.state.album.songs];
-    this.setState({songNumber: newTrackNumber});
   }
 
 
@@ -70,7 +66,7 @@ class Album extends Component {
     if(this.state.isPlaying && isSameSong){
       this.pause();
     } else {
-      if(!isSameSong){ this.setSong(song) }
+      if(!isSameSong){ this.setSong(song); }
       this.play();
     }
   }
@@ -118,21 +114,25 @@ class Album extends Component {
     this.setState({ volume: newVolume });
   }
 
-  hoverIn(e, index) {
-    const newDisplay = this.state.handleHover.map((disp, indexDisp) =>  indexDisp === index ? true : false )
-    this.setState({ handleHover : newDisplay });
+  hoverIn(index) {
+    console.log('IN');
+    this.setState({ 
+      hoverIndex: index 
+    });
+  }
+   
+  hoverOut() {
+    console.log('OUT')
+      this.setState({ 
+        hovereIndex: -1 
+      });
   }
 
-  hoverOut() {
-    const newDisplay = this.state.handleHover.map(() => false);
-    this.setState({ handleHover : newDisplay });
-  }
-  
   songListButton(index) {
-    if((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]){
-      return 'ion-pause';
+    if((this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
+      return 'playing';
     } else if ((!this.state.isPlaying) && this.state.currentSong === this.state.album.songs[index]) {
-      return 'ion-play';
+      return 'paused';
     } else {
       return 'song-number';
     } 
@@ -166,17 +166,20 @@ class Album extends Component {
                   <tbody>
                   {
                     this.state.album.songs.map( (song, index) =>
-                    <tr className='song' 
+                    <tr 
                         key={index} 
-                        onMouseEnter={(e) => this.hoverIn(e, index)} 
+                        onMouseEnter={() => this.hoverIn(index)} 
                         onMouseLeave={() => this.hoverOut()} 
-                        onClick={() => this.handleSongClick(song)} >
-                      <td className='song-actions'>
-                        <Button>
-                          <span className={this.songListButton(index)} style={{display: this.state.handleHover[index] || this.state.songNumber[index] ? 'none' : '' }}></span>
-                          <span style={{display: this.state.handleHover[index] || !this.state.songNumber[index] ? 'none' : ''}}> {index+1} </span>
-                          <span className='ion-play' style={{display: this.state.handleHover[index] ? '' : 'none' }}></span>
-                        </Button>
+                        onClick={() => this.handleSongClick(song)} 
+                      >
+                      <td id='song-actions'>
+                        
+                          <span className={'song ' + this.songListButton(index)} >
+                            <span className='song-number'> {index + 1} </span>
+                            <span className='ion-play'></span>
+                            <span className='ion-pause'></span>
+                          </span>
+                         
                       </td>
                       <td>{song.title}</td>
                       <td>{this.formatTime(song.duration)}</td>
