@@ -76,20 +76,20 @@
 .song:hover .ion-play {
     display: inline;
 }
-.song:hover .song-number {
+.song:hover .song-number,
+.song:hover .ion-pause {
     display: none;
 }
 
 /* Song playing, show .ion-pause */
-.song.playing .song-number {
+.song.playing .song-number,
+.song.playing .ion-play {
     display: none;
 }
 .song.playing .ion-pause {
     display: inline;
 }
-.song.playing:hover .ion-pause {
-    display: none;
-}
+.song.playing:hover .ion-pause,
 .song.playing:hover .ion-play {
     display: none;
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-import { Button, Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
+import { Col, Grid, Row, Table, tbody, td, thead, th, tr } from 'react-bootstrap'
 import './Album.css';
 
 class Album extends Component {
@@ -13,13 +13,11 @@ class Album extends Component {
 
   this.state = {
     album: album,
-    currentSong: album.songs[0],
     currentTime: 0,
     duration: album.songs[0].duration,
     volume: 1,
     isPlaying: false,
   };
-
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
   }
@@ -46,13 +44,11 @@ class Album extends Component {
   play() {
     this.audioElement.play();
     this.setState({ isPlaying: true });
-    this.setState({ isPaused: false });
   }
   
   pause() {
     this.audioElement.pause();
     this.setState({ isPlaying: false });
-    this.setState({ isPaused: true });
   }  
 
   setSong(song) {
@@ -135,7 +131,8 @@ class Album extends Component {
       return 'paused';
     } else {
       return 'song-number';
-    } 
+    }
+     
   }
 
   render() {
